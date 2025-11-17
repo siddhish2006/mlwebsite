@@ -57,9 +57,9 @@ def upload_file():
 
 if __name__ == '__main__':
     # For local development, use debug mode
-    # For production, Render will use gunicorn
+    # For production, Railway will use gunicorn
     port = int(os.environ.get('PORT', 5000))
     debug_mode = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
-    app.run(host='127.0.0.1', port=port, debug=debug_mode)
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)
 
 
