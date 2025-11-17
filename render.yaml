@@ -3,7 +3,7 @@ services:
     name: mlwebsite
     env: python
     plan: free
-    buildCommand: pip install --upgrade pip setuptools wheel && pip install --prefer-binary numpy==1.26.4 && pip install --prefer-binary scipy==1.12.0 && pip install --prefer-binary scikit-learn==1.4.1 && pip install --prefer-binary pandas==2.1.4 matplotlib==3.8.2 && pip install --prefer-binary Flask==3.0.0 flask-cors==4.0.0 gunicorn==21.2.0 Werkzeug==3.0.1
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
     startCommand: gunicorn app:app
     autoDeploy: true
 
