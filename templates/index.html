@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMeans Clustering Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 KMeans Clustering Analysis</h1>
+            <p>Upload your dataset to perform clustering analysis</p>
+        </header>
+
+        <div class="upload-section">
+            <div class="upload-box" id="uploadBox">
+                <input type="file" id="fileInput" accept=".csv" style="display: none;">
+                <div class="upload-icon">📁</div>
+                <p>Click to upload or drag and drop your CSV file</p>
+                <p class="file-info">Supported format: CSV</p>
+            </div>
+            <button id="processBtn" class="process-btn" disabled>Process Dataset</button>
+        </div>
+
+        <div id="loadingSection" class="loading-section" style="display: none;">
+            <div class="spinner"></div>
+            <p>Processing your dataset...</p>
+        </div>
+
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <h2>Clustering Results</h2>
+            
+            <div class="metrics-card">
+                <h3>Model Metrics</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <span class="metric-label">Number of Clusters:</span>
+                        <span class="metric-value" id="numClusters">-</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Silhouette Score:</span>
+                        <span class="metric-value" id="silhouetteScore">-</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Davies-Bouldin Index:</span>
+                        <span class="metric-value" id="dbIndex">-</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Total Persons:</span>
+                        <span class="metric-value" id="totalPersons">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clusters-container" id="clustersContainer">
+                <!-- Clusters will be dynamically inserted here -->
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Elbow Method Plot</h3>
+                    <canvas id="elbowChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>PCA Visualization</h3>
+                    <canvas id="pcaChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div id="errorSection" class="error-section" style="display: none;">
+            <div class="error-box">
+                <span class="error-icon">⚠️</span>
+                <p id="errorMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
+

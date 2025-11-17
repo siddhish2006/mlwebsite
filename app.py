@@ -56,6 +56,10 @@ def upload_file():
     return jsonify({'error': 'Invalid file type. Please upload a CSV file.'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # For local development, use debug mode
+    # For production, Render will use gunicorn
+    port = int(os.environ.get('PORT', 5000))
+    debug_mode = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
+    app.run(host='127.0.0.1', port=port, debug=debug_mode)
 
 
