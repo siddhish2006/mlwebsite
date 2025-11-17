@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: snu-clustering-app
+    name: mlwebsite
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
     startCommand: gunicorn app:app
     autoDeploy: true
 
