@@ -3,7 +3,7 @@ services:
     name: mlwebsite
     env: python
     plan: free
-    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    buildCommand: pip install --upgrade pip setuptools wheel && pip install --prefer-binary numpy==1.26.4 scipy==1.13.1 scikit-learn==1.5.1 && pip install --prefer-binary -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
     autoDeploy: true
 
